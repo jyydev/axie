@@ -113,7 +113,7 @@ const Input = () => {
             })}
           </div>
         </form>
-        <Result outputs={outputs} loading={loading} rate={rate} price={price} />
+        <Result outputs={outputs} loading={loading} rate={rate} price={price} input={input} />
       </article>
     </>
   );
