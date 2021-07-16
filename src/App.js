@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useFetch } from './useFetch';
+import Result from './Result';
 var slp_eth = 'https://api.binance.com/api/v3/depth?symbol=SLPETH&limit=5';
 var eth_usd = 'https://api.binance.com/api/v3/depth?symbol=ETHUSDT&limit=5';
 var slp_usd = 'https://api.binance.com/api/v3/depth?symbol=SLPUSDT&limit=5';
@@ -43,7 +44,10 @@ const Input = () => {
     });
   }, [input]);
 
+  // var key = 0;
   const costs = [150, 300, 450, 750];
+  const sums = [450, 900, 1650];
+  const costss = { a: 'aa', b: 'bb' };
   function changeInput(num) {
     setInput(num);
   }
@@ -80,6 +84,7 @@ const Input = () => {
             {costs.map((cost, i) => {
               return (
                 <button
+                  key={i}
                   type='button'
                   className='btn'
                   onClick={() => setInput(cost)}
@@ -91,45 +96,21 @@ const Input = () => {
           </div>
           <div>
             Sum:
-            <button type='button' className='btn' onClick={() => setInput(450)}>
-              0 ➡ 2
-            </button>
-            <button type='button' className='btn' onClick={() => setInput(900)}>
-              0 ➡ 3
-            </button>
-            <button
-              type='button'
-              className='btn'
-              onClick={() => setInput(1650)}
-            >
-              0 ➡ 4
-            </button>
-            {/* 0->3:<button className='btn'>900</button>
-            0->4:<button className='btn'>1650</button> */}
+            {sums.map((sum, i) => {
+              return (
+                <button
+                  key={i}
+                  type='button'
+                  className='btn'
+                  onClick={() => setInput(sum)}
+                >
+                  {0} ➡ {i + 2}
+                </button>
+              );
+            })}
           </div>
         </form>
-        <div className='item'>
-          <p></p>
-          <h2>{outputs.eth} ETH</h2>
-          <p></p>
-        </div>
-        <div className='item'>
-          <p></p>
-          <h2>{outputs.slp} USD</h2>
-          <p></p>
-        </div>
-        <div className='item'>
-          <p>1 SLP</p>
-          <p>{loading ? 'loading...' : rate} ETH</p>
-        </div>
-        <div className='item'>
-          <p>1 SLP</p>
-          <p>{price.slp} USD</p>
-        </div>
-        <div className='item'>
-          <p>1 ETH</p>
-          <p>{price.eth} USD</p>
-        </div>
+        <Result outputs={outputs} loading={loading} rate={rate} price={price} />
       </article>
     </>
   );
