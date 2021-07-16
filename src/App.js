@@ -25,7 +25,6 @@ const Input = () => {
     const res = await fetch(apiUrl);
     const data = await res.json();
     var usd = data.bids[0][0];
-    // setPrice({ ...price, [crypto]: usd });
     setPrice((prevState) => {
       if (crypto === 'slp') usd = parseFloat(usd).toFixed(2);
       if (crypto === 'eth') usd = parseFloat(usd);
