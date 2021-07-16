@@ -43,9 +43,22 @@ const Input = () => {
     });
   }, [input]);
 
+  const costs = [150, 300, 450, 750];
+  function changeInput(num) {
+    setInput(num);
+  }
+
   return (
     <>
-      <h1>SLP &gt; ETH</h1>
+      <h2>
+        <img
+          style={{ verticalAlign: 'middle', marginRight: '0.5rem' }}
+          height='50rem'
+          src='https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png'
+          alt='SLP'
+        />
+        Small Love Potion
+      </h2>
       <h3>{input || 0} SLP</h3>
       <article>
         <form className='form'>
@@ -61,6 +74,38 @@ const Input = () => {
                 setInput(e.target.value);
               }}
             />
+          </div>
+          <div>
+            Breed:
+            {costs.map((cost, i) => {
+              return (
+                <button
+                  type='button'
+                  className='btn'
+                  onClick={() => setInput(cost)}
+                >
+                  {i} ➡ {i + 1}
+                </button>
+              );
+            })}
+          </div>
+          <div>
+            Sum:
+            <button type='button' className='btn' onClick={() => setInput(450)}>
+              0 ➡ 2
+            </button>
+            <button type='button' className='btn' onClick={() => setInput(900)}>
+              0 ➡ 3
+            </button>
+            <button
+              type='button'
+              className='btn'
+              onClick={() => setInput(1650)}
+            >
+              0 ➡ 4
+            </button>
+            {/* 0->3:<button className='btn'>900</button>
+            0->4:<button className='btn'>1650</button> */}
           </div>
         </form>
         <div className='item'>
