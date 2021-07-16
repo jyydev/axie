@@ -45,8 +45,8 @@ const Input = () => {
   }, [input]);
 
   // var key = 0;
-  const costs = [150, 300, 450, 750];
-  const sums = [450, 900, 1650];
+  const costs = [150, 300, 450, 750, 1200, 1950, 3150];
+  const sums = [450, 900, 1650, 2850];
   const costss = { a: 'aa', b: 'bb' };
   function changeInput(num) {
     setInput(num);
