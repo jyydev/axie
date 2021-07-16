@@ -92,7 +92,7 @@ const Input = () => {
                   className='btn'
                   onClick={() => setInput(cost)}
                 >
-                  {i} ➡ {i + 1}
+                  {i} &#10132; {i + 1}
                 </button>
               );
             })}
@@ -107,7 +107,7 @@ const Input = () => {
                   className='btn'
                   onClick={() => setInput(sum)}
                 >
-                  {0} ➡ {i + 2}
+                  {0} &#10132; {i + 2}
                 </button>
               );
             })}
