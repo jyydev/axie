@@ -64,7 +64,7 @@ const Input = () => {
         Small Love Potion
       </h2>
       <p>
-        1 SLP = ${price.slp}, 1 ASX = ${price.axs.toFixed(2)}, 1 ETH = ${price.eth.toFixed(2)}
+        1 SLP = ${price.slp}, 1 AXS = ${price.axs.toFixed(2)}, 1 ETH = ${price.eth.toFixed(2)}
       </p>
       <h3>{input || 0} SLP</h3>
       <article>
