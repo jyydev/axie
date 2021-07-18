@@ -5,3 +5,5 @@
 ## Notes
 
 - This app is created using `create-react-app`
+
+- The exact code, files & folders are used in this app: https://axie.vercel.app/.
