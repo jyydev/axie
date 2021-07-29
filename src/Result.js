@@ -1,21 +1,19 @@
 import React from 'react';
 
-function Result({ outputs, loading, rate, price, input }) {
+function Result({ outputs, loading, rate, price, input, breeds }) {
   return (
     <>
       <div className='item'>
-        <p></p>
-        <h3>
-          <small>=</small> {outputs.eth} ETH
-        </h3>
-        <p></p>
+        <p>{input || 0} SLP</p>
+        <p>=</p>
+        <h3>{outputs.eth} ETH</h3>
       </div>
       <div className='item'>
-        <p></p>
+        <p>{input || 0} SLP</p>
+        <p>=</p>
         <h3>
-          <small>=</small> {outputs.slp} USD
+          {outputs.slp} USD
         </h3>
-        <p></p>
       </div>
       <div className='item'>
         <h4>
@@ -24,21 +22,23 @@ function Result({ outputs, loading, rate, price, input }) {
           <br />
           <p>{2 * input} SLP</p>
           <br />
-          <p>(+4 AXS)</p>
+          <p>(+{breeds * 4} AXS)</p>
         </h4>
-        <h3><small> = </small></h3>
+        <h3>
+          <small> = </small>
+        </h3>
 
         <h3>
           {input
-            ? parseFloat(2 * outputs.eth + (4 * price.axs) / price.eth).toFixed(
-                5
-              )
+            ? parseFloat(
+                2 * outputs.eth + (breeds * 4 * price.axs) / price.eth
+              ).toFixed(5)
             : '0.00'}{' '}
           ETH
           <br />
           <br />
           {input
-            ? parseFloat(2 * outputs.slp + 4 * price.axs).toFixed(2)
+            ? parseFloat(2 * outputs.slp + breeds * 4 * price.axs).toFixed(2)
             : '0.00'}{' '}
           USD
         </h3>

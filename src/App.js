@@ -21,6 +21,7 @@ const Input = () => {
   });
   const costs = [150, 300, 450, 750, 1200, 1950, 3150];
   const sums = [450, 900, 1650, 2850];
+  const [breeds, setBreeds] = useState(1);
   var rate = 0;
 
   if (!loading) {
@@ -54,19 +55,19 @@ const Input = () => {
 
   return (
     <>
-      <h2>
+      <h3>
         <img
           style={{ verticalAlign: 'middle', marginRight: '0.5rem' }}
-          height='50rem'
+          height='40rem'
           src='https://s2.coinmarketcap.com/static/img/coins/64x64/5824.png'
           alt='SLP'
         />
-        Small Love Potion
-      </h2>
+        Axie Breeding Calculator
+      </h3>
       <p>
-        1 SLP = ${price.slp}, 1 AXS = ${price.axs.toFixed(2)}, 1 ETH = ${price.eth.toFixed(2)}
+        1 SLP = ${price.slp}, 1 AXS = ${price.axs.toFixed(2)}, 1 ETH = $
+        {price.eth.toFixed(2)}
       </p>
-      <h3>{input || 0} SLP</h3>
       <article>
         <form className='form'>
           <div className='form-control'>
@@ -79,6 +80,7 @@ const Input = () => {
               value={input}
               onChange={(e) => {
                 setInput(e.target.value);
+                setBreeds(1);
               }}
             />
           </div>
@@ -90,7 +92,10 @@ const Input = () => {
                   key={i}
                   type='button'
                   className='btn'
-                  onClick={() => setInput(cost)}
+                  onClick={() => {
+                    setInput(cost);
+                    setBreeds(1);
+                  }}
                 >
                   {i} &#10132; {i + 1}
                 </button>
@@ -105,15 +110,25 @@ const Input = () => {
                   key={i}
                   type='button'
                   className='btn'
-                  onClick={() => setInput(sum)}
+                  onClick={() => {
+                    setInput(sum);
+                    setBreeds(i + 2);
+                  }}
                 >
-                  {0} &#10132; {i + 2}
+                  0 &#10132; {i + 2}
                 </button>
               );
             })}
           </div>
         </form>
-        <Result outputs={outputs} loading={loading} rate={rate} price={price} input={input} />
+        <Result
+          outputs={outputs}
+          loading={loading}
+          rate={rate}
+          price={price}
+          input={input}
+          breeds={breeds}
+        />
       </article>
     </>
   );
